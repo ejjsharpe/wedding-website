@@ -1,0 +1,473 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { Image } from 'astro:assets';
+---
+
+<Layout title="Venue - Elliot & Louise Wedding">
+  <div class="page">
+    <section class="heroSection">
+      <div class="heroContent">
+        <div class="venueInfo">
+          <h1 class="venueTitle">Foxtail Barns</h1>
+          <div class="titleSeparator"></div>
+          <div class="venueDescription">
+            <p>
+              Nestled in the heart of the Staffordshire countryside, Foxtail
+              Barns offers the perfect blend of rustic charm and modern
+              elegance. This stunning venue will be where we say "I do" and
+              celebrate our love with family and friends.
+            </p>
+            <p>
+              From the moment you arrive, you'll be captivated by the rolling
+              hills, picturesque landscapes, and the warm, welcoming
+              atmosphere that makes this place so special to us.
+            </p>
+          </div>
+        </div>
+        <div class="venueImages">
+          <div class="imageContainer">
+            <Image
+              src="https://foxtailbarns-venue.co.uk/wp-content/uploads/sites/8/2023/02/LN-549.jpg-re-sized.jpg"
+              alt="Foxtail Barns exterior view"
+              width={600}
+              height={400}
+              class="venueImage"
+            />
+            <span class="polaroidLabel">The Venue</span>
+          </div>
+          <div class="imageContainer">
+            <Image
+              src="https://foxtailbarns-venue.co.uk/wp-content/uploads/sites/8/2023/11/Foxtail-Barns-Orangery-James-Andrew.jpg"
+              alt="Foxtail Barns interior view"
+              width={600}
+              height={400}
+              class="venueImage"
+            />
+            <span class="polaroidLabel">The Orangery</span>
+          </div>
+          <div class="imageContainer">
+            <Image
+              src="https://foxtailbarns-venue.co.uk/wp-content/uploads/sites/8/2023/11/Foxtail-Barns-Party-Barn-James-Andrew.jpg"
+              alt="Foxtail Barns ceremony space"
+              width={600}
+              height={400}
+              class="venueImage"
+            />
+            <span class="polaroidLabel">Party Barn</span>
+          </div>
+          <div class="imageContainer">
+            <Image
+              src="https://foxtailbarns-venue.co.uk/wp-content/uploads/sites/8/2023/11/Foxtail-Barns-bar-James-Andrew.jpg"
+              alt="Foxtail Barns bar area"
+              width={600}
+              height={400}
+              class="venueImage"
+            />
+            <span class="polaroidLabel">The Bar</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="coralSection">
+      <SectionTitle class="sectionTitle">
+        Location & Directions
+      </SectionTitle>
+      <div class="mapSection">
+        <div class="mapContainer">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2399.0837910976265!2d-2.0166756999999995!3d53.0368314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a3fd81ddca4e7%3A0x2c5a2610625e7c6b!2sFoxtail%20Barns%20Wedding%20Venue%20With%20Lodges!5e0!3m2!1sen!2suk!4v1759691247127!5m2!1sen!2suk"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="mapFrame"
+          ></iframe>
+          <span class="mapLabel">How to find us</span>
+        </div>
+
+        <div class="locationDetails">
+          <h3>Getting There</h3>
+
+          <div class="transportOption">
+            <h4>🚗 By Car</h4>
+            <p>
+              Feel free to drive directly to the venue. Pull into Foxtail
+              Barns and there will be free parking for you to use throughout
+              the wedding.
+            </p>
+          </div>
+
+          <div class="transportOption">
+            <h4>🚌 Shuttle Service</h4>
+            <p>Complimentary shuttle from recommended hotels</p>
+            <p>Pickup times: 3:45 PM, 4:00 PM, 4:15 PM</p>
+            <p>Return shuttles: 10:00 PM, 11:00 PM, 12:00 AM</p>
+          </div>
+
+          <div class="transportOption">
+            <h4>🚕 Rideshare</h4>
+            <p>Uber and Lyft pickup/dropoff available</p>
+            <p>Designated rideshare area at main entrance</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+  padding-top: 70px;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.venueInfo {
+  padding: 0 1rem;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  order: 1;
+}
+
+.venueTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--primary);
+  font-family: var(--font-elika);
+  margin-bottom: 1rem;
+}
+
+.titleSeparator {
+  width: 100%;
+  height: 1px;
+  background-color: #000000;
+  margin-bottom: 2rem;
+}
+
+.venueDescription p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #000000;
+  margin-bottom: 1.5rem;
+}
+
+.venueImages {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  gap: 1rem;
+  padding: 0;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  order: 2;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: white;
+  padding: 15px 15px 40px 15px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 0.5rem;
+}
+
+.imageContainer:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.venueImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.polaroidLabel {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-script);
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.coralSection {
+  background-color: var(--primary-light);
+  padding: 3rem 1rem;
+  min-height: auto;
+  width: 100%;
+}
+
+.coralSection .sectionTitle {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.mapSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.mapContainer {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 20px 20px 80px 20px;
+  border-radius: 3px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+.mapContainer:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.mapFrame {
+  display: flex;
+  width: 100%;
+  height: 250px;
+  border-radius: 2px;
+}
+
+.mapLabel {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-script);
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.locationDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  gap: 1rem;
+}
+
+.locationDetails h3 {
+  font-size: 1.5rem;
+  font-family: var(--font-elika);
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.transportOption {
+  padding: 0.75rem 0;
+  border-radius: 0;
+}
+
+.transportOption h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-family: var(--font-elika);
+}
+
+.transportOption p {
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+/* Small mobile optimizations */
+@media (min-width: var(--breakpoint-sm)) {
+  .imageContainer {
+    height: 220px;
+  }
+  
+  .venueTitle {
+    font-size: 2rem;
+  }
+  
+  .mapContainer {
+    max-width: 500px;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: var(--breakpoint-md)) {
+  .heroSection {
+    padding: 2rem;
+  }
+  
+  .venueImages {
+    max-width: 500px;
+  }
+  
+  .coralSection {
+    padding: 4rem 2rem;
+  }
+  
+  .mapContainer {
+    max-width: 600px;
+  }
+  
+  .mapFrame {
+    height: 300px;
+  }
+  
+  .mapLabel {
+    font-size: 3rem;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .heroSection {
+    min-height: calc(90vh - 70px);
+  }
+  
+  .heroContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+  }
+  
+  .venueInfo {
+    order: 2;
+    text-align: left;
+  }
+  
+  .venueImages {
+    order: 1;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    max-width: none;
+  }
+  
+  .imageContainer {
+    position: absolute;
+    width: 220px;
+    height: 200px;
+  }
+  
+  .imageContainer:nth-child(1) {
+    left: 20%;
+    top: 7%;
+    transform: rotate(-8deg);
+    z-index: 4;
+  }
+  
+  .imageContainer:nth-child(1):hover {
+    transform: rotate(0deg) scale(1.5);
+    z-index: 10;
+  }
+  
+  .imageContainer:nth-child(2) {
+    right: 5%;
+    top: 8%;
+    transform: rotate(5deg);
+    z-index: 4;
+  }
+  
+  .imageContainer:nth-child(2):hover {
+    transform: rotate(0deg) scale(1.5);
+    z-index: 10;
+  }
+  
+  .imageContainer:nth-child(3) {
+    left: 20%;
+    bottom: 12%;
+    transform: rotate(3deg);
+    z-index: 1;
+  }
+  
+  .imageContainer:nth-child(3):hover {
+    transform: rotate(0deg) scale(1.5);
+    z-index: 10;
+  }
+  
+  .imageContainer:nth-child(4) {
+    right: 5%;
+    bottom: 15%;
+    transform: rotate(-6deg);
+    z-index: 2;
+  }
+  
+  .imageContainer:nth-child(4):hover {
+    transform: rotate(0deg) scale(1.5);
+    z-index: 10;
+  }
+  
+  .mapSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  .coralSection {
+    padding: 5rem;
+    min-height: 100vh;
+  }
+  
+  .mapContainer {
+    max-width: 600px;
+  }
+  
+  .mapFrame {
+    height: 450px;
+  }
+  
+  .mapLabel {
+    font-size: 3.5rem;
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1024px) {
+  .venueTitle {
+    font-size: 3rem;
+  }
+}
+</style>

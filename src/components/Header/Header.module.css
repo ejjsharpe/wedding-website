@@ -1,0 +1,139 @@
+/* Mobile-first Header styles */
+.header {
+  background: var(--background);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 70px;
+}
+
+.headerContent {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  font-family: var(--font-elika);
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+/* Mobile menu toggle - visible by default */
+.menuToggle {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger {
+  width: 25px;
+  height: 2px;
+  background-color: var(--primary);
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Mobile navigation - hidden by default */
+.nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--background);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.navOpen {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+  gap: 0;
+  flex-direction: column;
+}
+
+.navList li a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 1rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+  font-family: var(--font-elika);
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navList li:last-child a {
+  border-bottom: none;
+}
+
+.navList li a:hover {
+  opacity: 0.7;
+}
+
+.navList li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #000000;
+  transition: width 0.3s ease;
+}
+
+.navList li a:hover::after {
+  width: 100%;
+}
+
+/* Tablet and up - show horizontal navigation */
+@media (min-width: 768px) {
+  .menuToggle {
+    display: none;
+  }
+
+  .nav {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    transition: none;
+  }
+
+  .navList {
+    flex-direction: row;
+    padding: 0;
+    gap: 2rem;
+  }
+
+  .navList li a {
+    padding: 0.5rem 0;
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,41 @@
+---
+export interface Props {
+  href?: string;
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+const { href, class: className = '', type = 'button' } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag 
+  href={href} 
+  type={href ? undefined : type}
+  class={`btn ${className}`}
+>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: var(--font-elika);
+  }
+
+  .btn:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+  }
+</style>

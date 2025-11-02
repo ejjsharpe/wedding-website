@@ -1,0 +1,38 @@
+.heroImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 1;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .heroImage {
+    order: 0;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImageImg {
+  object-fit: contain;
+  border-radius: 10px;
+  width: 75%;
+  height: auto;
+  display: block;
+}
+
+.waveyFrame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+  width: 85%;
+}

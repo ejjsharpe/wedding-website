@@ -1,22 +1,71 @@
-<!doctype html>
+---
+import '../styles/preflight.css';
+import Header from '../components/Header/Header';
+import { ClientRouter } from "astro:transitions";
+
+
+export interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Join us as we celebrate our love story and begin our journey together as husband and wife" } = Astro.props;
+---
+
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="preload" href="/elika-gorica.ttf" as="font" type="font/ttf" crossorigin />
+		<link rel="preload" href="/bdscript-regular.otf" as="font" type="font/otf" crossorigin />
+		<title>{title}</title>
+		<ClientRouter />
 	</head>
 	<body>
-		<slot />
+		<Header client:load />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
 
-<style>
-	html,
+<style is:global>
+	@font-face {
+		font-family: "Elika Gorica";
+		src: url("/elika-gorica.ttf") format("truetype");
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "BD Script";
+		src: url("/bdscript-regular.otf") format("opentype");
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	:root {
+		--background: #fff6e7;
+		--primary: #ff7051;
+		--primary-light: #ffaf9d;
+		--highlight-text: #000000;
+		--shadow: rgba(0, 0, 0, 0.08);
+		--font-elika: "Elika Gorica", serif;
+		--font-script: "BD Script", cursive;
+		
+		/* Breakpoint variables */
+		--breakpoint-sm: 480px;
+		--breakpoint-md: 640px;
+		--breakpoint-lg: 768px;
+		--breakpoint-xl: 1024px;
+		--breakpoint-2xl: 1280px;
+	}
+
 	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+		background: var(--background);
 	}
 </style>

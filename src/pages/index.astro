@@ -1,11 +1,218 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Button from '../components/Button.astro';
+import HeroImage from '../components/HeroImage.tsx';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Elliot & Louise Wedding">
+  <div class="page">
+    <div class="spacer"></div>
+    <section class="heroSection">
+      <div class="heroContent">
+        <HeroImage client:load />
+        <div class="heroText">
+          <div class="titleContainer">
+            <h1 class="title">
+              We're getting<br/> married!
+              <span class="scriptSubheading">
+                Louise <br/> + Elliot
+              </span>
+            </h1>
+          </div>
+          <p class="subtitle">Come celebrate with us!</p>
+          <div class="divider"></div>
+          <div class="weddingDate">
+            <time datetime="2026-03-20">
+              March 20th 2026 | 1.30 in the afternoon
+            </time>
+          </div>
+          <Button href="/rsvp">
+            RSVP
+          </Button>
+        </div>
+      </div>
+    </section>
+    <footer class="footer"></footer>
+  </div>
 </Layout>
+
+<style>
+/* Mobile-first home page styles */
+.page {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spacer {
+  min-height: 6rem - 70px;
+  width: 100%;
+}
+
+.heroSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+  padding-top: 70px;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+
+.heroText {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleContainer {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  font-family: var(--font-elika);
+  position: relative;
+}
+
+.scriptSubheading {
+  position: absolute;
+  bottom: -0.5rem;
+  right: -1rem;
+  margin-left: 1rem;
+  font-family: var(--font-script);
+  font-size: 2.5rem;
+  color: #000;
+  transform: rotate(-22deg);
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1.8rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  font-weight: 400;
+  font-family: var(--font-elika);
+}
+
+.divider {
+  width: 80%;
+  height: 1px;
+  background-color: #000000;
+  margin: 1rem 0;
+}
+
+.weddingDate {
+  margin-bottom: 1.5rem;
+}
+
+.weddingDate time {
+  font-size: 1.2rem;
+  font-family: var(--font-elika);
+  color: var(--primary);
+  font-weight: 500;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.footer {
+  min-height: 6rem;
+  background-color: var(--primary-light);
+  width: 100%;
+}
+
+/* Small mobile optimizations */
+@media (min-width: 480px) {
+  .title {
+    font-size: 2.8rem;
+  }
+  
+  .scriptSubheading {
+    font-size: 3rem;
+    line-height: 2rem;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 640px) {
+  .heroContent {
+    gap: 3rem;
+  }
+  
+  .title {
+    font-size: 3.2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.8rem;
+  }
+  
+  .weddingDate time {
+    font-size: 1.4rem;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .heroContent {
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  
+  .heroText {
+    order: 0;
+    align-items: flex-start;
+  }
+  
+  .divider {
+    margin: 1.5rem 0;
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1024px) {
+  .title {
+    font-size: 3.5rem;
+  }
+  
+  .scriptSubheading {
+    font-size: 5rem;
+    bottom: 0;
+    right: 1rem;
+    line-height: 2.2rem;
+  }
+  
+  .subtitle {
+    font-size: 2rem;
+  }
+  
+  .weddingDate time {
+    font-size: 1.5rem;
+  }
+}
+
+</style>
+
