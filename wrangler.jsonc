@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "main": "dist/_worker.js/index.js",
   "name": "wedding-website",
   "compatibility_date": "2025-11-02",
@@ -9,5 +10,11 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    {
+      "pattern": "shop.example.com",
+      "custom_domain": true
+    }
+  ]
 }
