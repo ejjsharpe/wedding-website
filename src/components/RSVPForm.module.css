@@ -1,0 +1,250 @@
+/* RSVP Form Styles */
+.rsvpForm {
+  width: 100%;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--background);
+  font-family: var(--font-archivo);
+  font-size: 1rem;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-montserrat);
+  background: white;
+  transition: border-color 0.3s ease;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* RSVP Subheading */
+.rsvpSubheading {
+  font-size: 1rem;
+  color: var(--background);
+  font-family: var(--font-archivo);
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Guests Section */
+.guestsSection {
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.guestCard {
+  padding: 1.5rem 0;
+  margin-bottom: 1rem;
+}
+
+.guestCard:not(:first-child) {
+  border-top: 1px solid var(--background);
+  padding-top: 2rem;
+}
+
+.guestHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.guestTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  font-family: var(--font-elika);
+}
+
+.removeGuestBtn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.removeGuestBtn:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.radioLabel {
+  margin-right: 1rem;
+  font-weight: normal;
+  cursor: pointer;
+  color: var(--background);
+  font-family: var(--font-archivo);
+}
+
+.radioLabel input[type="radio"],
+.radioLabel input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+  background: white;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.radioLabel input[type="radio"]:checked,
+.radioLabel input[type="checkbox"]:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.radioLabel input[type="radio"]:checked::after,
+.radioLabel input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--highlight-text);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Name Row */
+.nameRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.nameRow .formGroup {
+  flex: 1;
+}
+
+/* Checkbox Group */
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.radioLabel input[type="radio"]:focus,
+.radioLabel input[type="checkbox"]:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.addGuestBtn {
+  background: transparent;
+  border: 2px solid var(--background);
+  color: var(--background);
+  padding: 1rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-family: var(--font-elika);
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.addGuestBtn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Status Messages */
+.statusMessage {
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-weight: 500;
+  font-family: var(--font-montserrat);
+}
+
+.statusMessage.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* Submit Button */
+.submitBtn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-family: var(--font-elika);
+  width: 100%;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.submitBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .rsvpForm {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .radioGroup {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .rsvpForm {
+    max-width: 700px;
+  }
+}
+
+/* Validation Error */
+.validationError {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-family: var(--font-archivo);
+}

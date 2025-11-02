@@ -7,9 +7,10 @@ import { ClientRouter } from "astro:transitions";
 export interface Props {
 	title: string;
 	description?: string;
+	theme?: 'primary' | 'secondary';
 }
 
-const { title, description = "Join us as we celebrate our love story and begin our journey together as husband and wife" } = Astro.props;
+const { title, description = "Join us as we celebrate our love story and begin our journey together as husband and wife", theme = 'primary' } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -22,11 +23,13 @@ const { title, description = "Join us as we celebrate our love story and begin o
 		<meta name="generator" content={Astro.generator} />
 		<link rel="preload" href="/elika-gorica.ttf" as="font" type="font/ttf" crossorigin />
 		<link rel="preload" href="/bdscript-regular.otf" as="font" type="font/otf" crossorigin />
+		<link rel="preload" href="/Montserrat-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+		<link rel="preload" href="/ArchivoBlack-Regular.ttf" as="font" type="font/ttf" crossorigin />
 		<title>{title}</title>
 		<ClientRouter />
 	</head>
-	<body>
-		<Header client:load />
+	<body class={theme}>
+		<Header client:load theme={theme} />
 		<main>
 			<slot />
 		</main>
@@ -48,6 +51,20 @@ const { title, description = "Join us as we celebrate our love story and begin o
 		font-style: normal;
 	}
 
+	@font-face {
+		font-family: "Montserrat";
+		src: url("/Montserrat-VariableFont_wght.ttf") format("truetype");
+		font-weight: 100 900;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Archivo Black";
+		src: url("/ArchivoBlack-Regular.ttf") format("truetype");
+		font-weight: 900;
+		font-style: normal;
+	}
+
 	:root {
 		--background: #fff6e7;
 		--primary: #ff7051;
@@ -56,16 +73,50 @@ const { title, description = "Join us as we celebrate our love story and begin o
 		--shadow: rgba(0, 0, 0, 0.08);
 		--font-elika: "Elika Gorica", serif;
 		--font-script: "BD Script", cursive;
+		--font-montserrat: "Montserrat", sans-serif;
+		--font-archivo: "Archivo Black", sans-serif;
 		
 		/* Breakpoint variables */
 		--breakpoint-sm: 480px;
 		--breakpoint-md: 640px;
 		--breakpoint-lg: 768px;
 		--breakpoint-xl: 1024px;
-		--breakpoint-2xl: 1280px;
 	}
 
 	body {
 		background: var(--background);
+	}
+
+	body.secondary {
+		background: var(--primary-light);
+	}
+
+	p {
+		font-family: var(--font-archivo);
+		color: var(--background);
+		font-size: 1.2rem;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+  		font-weight: 300;
+  		color: var(--primary);
+  		line-height: 1.2;
+  		font-family: var(--font-elika);
+  		position: relative;
+	}
+
+	h2 {
+		font-size: 2rem;
+    	font-weight: 600;
+    	color: var(--primary);
+    	font-family: var(--font-elika);
+	}
+
+	.container {
+  		max-width: 1280px;
+		padding: 0 1rem;
+		width: 100%;
+		margin: 0 auto;
 	}
 </style>

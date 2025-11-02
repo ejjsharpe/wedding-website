@@ -1,7 +1,13 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
 
-export default function Header() {
+interface HeaderProps {
+  theme?: "primary" | "secondary";
+  hideLogoOnMobile?: boolean;
+  menuOnRight?: boolean;
+}
+
+export default function Header({ theme = "primary" }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const toggleMenu = () => {
@@ -9,13 +15,15 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${styles[theme]}`}>
       <div className={styles.headerContent}>
         <a href="/" className={styles.logo}>
           Elliot & Louise
         </a>
         <button
-          className={styles.menuToggle}
+          className={`${styles.menuToggle} ${
+            isMenuOpen ? styles.menuOpen : ""
+          }`}
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
         >
@@ -26,17 +34,17 @@ export default function Header() {
 
         <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ""}`}>
           <ul className={styles.navList}>
-            <li>
-              <a href="/venue" onClick={() => setIsMenuOpen(false)}>
-                Venue
+            <li className={styles.mobileOnly}>
+              <a href="/" onClick={() => setIsMenuOpen(false)}>
+                Home
               </a>
             </li>
             <li>
-              <a href="/rsvp" onClick={() => setIsMenuOpen(false)}>
-                RSVP
+              <a href="/travel" onClick={() => setIsMenuOpen(false)}>
+                Travel & Stay
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="/schedule" onClick={() => setIsMenuOpen(false)}>
                 Schedule
               </a>
@@ -44,6 +52,11 @@ export default function Header() {
             <li>
               <a href="/photos" onClick={() => setIsMenuOpen(false)}>
                 Photos
+              </a>
+            </li> */}
+            <li>
+              <a href="/rsvp" onClick={() => setIsMenuOpen(false)}>
+                RSVP
               </a>
             </li>
           </ul>

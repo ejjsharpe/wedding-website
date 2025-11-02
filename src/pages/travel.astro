@@ -1,28 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionTitle from '../components/SectionTitle.astro';
 import { Image } from 'astro:assets';
+import Button from '../components/Button.astro';
 ---
 
-<Layout title="Venue - Elliot & Louise Wedding">
+<Layout title="Travel & Stay - Elliot & Louise Wedding" theme="secondary">
   <div class="page">
+    <div class="pageHeader">
+      <h1 class="pageTitle">But can they do it on a rainy day in Stoke?</h1>
+    </div>
     <section class="heroSection">
       <div class="heroContent">
         <div class="venueInfo">
-          <h1 class="venueTitle">Foxtail Barns</h1>
+          <h2 class="sectionTitle">Foxtail Barns</h2>
           <div class="titleSeparator"></div>
           <div class="venueDescription">
             <p>
-              Nestled in the heart of the Staffordshire countryside, Foxtail
-              Barns offers the perfect blend of rustic charm and modern
-              elegance. This stunning venue will be where we say "I do" and
-              celebrate our love with family and friends.
+              Thats right, we're getting married in Stoke - every brides dream!
             </p>
             <p>
-              From the moment you arrive, you'll be captivated by the rolling
-              hills, picturesque landscapes, and the warm, welcoming
-              atmosphere that makes this place so special to us.
+              Jokes aside, we hope you'll all enjoy Foxtail Barns, the venue we've chosen for our wedding. We viewed a lot of different
+              places and found this one suited us the best. 
             </p>
+             <p>
+              If you're staying nearby, click below to see some recommended local accommodation.
+            </p>
+            <div class="buttonContainer">
+              <Button href="https://foxtailbarns-venue.co.uk/local-accommodation/">
+                View Accommodations
+              </Button>
+            </div>
           </div>
         </div>
         <div class="venueImages">
@@ -69,60 +76,78 @@ import { Image } from 'astro:assets';
         </div>
       </div>
     </section>
-
+    <div class="dividerSection">
+      <img src="/curved-line.svg" alt="" class="curvedLine" />
+    </div>
     <section class="coralSection">
-      <SectionTitle class="sectionTitle">
-        Location & Directions
-      </SectionTitle>
-      <div class="mapSection">
-        <div class="mapContainer">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2399.0837910976265!2d-2.0166756999999995!3d53.0368314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a3fd81ddca4e7%3A0x2c5a2610625e7c6b!2sFoxtail%20Barns%20Wedding%20Venue%20With%20Lodges!5e0!3m2!1sen!2suk!4v1759691247127!5m2!1sen!2suk"
-            width="600"
-            height="450"
-            style="border: 0"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            class="mapFrame"
-          ></iframe>
-          <span class="mapLabel">How to find us</span>
-        </div>
-
-        <div class="locationDetails">
-          <h3>Getting There</h3>
-
-          <div class="transportOption">
-            <h4>🚗 By Car</h4>
-            <p>
-              Feel free to drive directly to the venue. Pull into Foxtail
-              Barns and there will be free parking for you to use throughout
-              the wedding.
-            </p>
+        <div class="heroContent">
+          <div class="mapContainer">
+          <div class="mapCard">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2399.0837910976265!2d-2.0166756999999995!3d53.0368314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a3fd81ddca4e7%3A0x2c5a2610625e7c6b!2sFoxtail%20Barns%20Wedding%20Venue%20With%20Lodges!5e0!3m2!1sen!2suk!4v1759691247127!5m2!1sen!2suk"
+              style="border: 0"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="mapFrame"
+            ></iframe>
+            <span class="mapLabel">How to find us</span>
           </div>
-
-          <div class="transportOption">
-            <h4>🚌 Shuttle Service</h4>
-            <p>Complimentary shuttle from recommended hotels</p>
-            <p>Pickup times: 3:45 PM, 4:00 PM, 4:15 PM</p>
-            <p>Return shuttles: 10:00 PM, 11:00 PM, 12:00 AM</p>
           </div>
-
-          <div class="transportOption">
-            <h4>🚕 Rideshare</h4>
-            <p>Uber and Lyft pickup/dropoff available</p>
-            <p>Designated rideshare area at main entrance</p>
+          <div class="textSection">
+            <h2 class="sectionTitle">Travel</h2>
+            <div class="titleSeparator"></div>
+            <div class="locationDetails">
+                <p>
+                  Parking is available at the venue, alternatively the closest train station is Stoke-on-Trent, 
+                  which is a 20 minute taxi ride away. 
+                </p>
+                <p>
+                  If you are travelling by train, we recommend getting a train to Stoke-on-Trent station and getting a taxi from there. 
+                </p>
+                <p>
+                  If you're staying locally, it's recommended to use a local taxi firm and book your taxi in advance. If you're staying at the premier inn in Leek, ‘Leek Link Taxis’ have been recommended to us and can be reached on 01538 399999.
+                </p>
+            </div>
           </div>
         </div>
-      </div>
     </section>
   </div>
 </Layout>
 
 <style>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .page {
+  min-height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6em 2rem;
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.pageTitle {
+  font-family: var(--font-archivo);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--background);
+  margin: 0;
 }
 
 .heroSection {
@@ -130,22 +155,20 @@ import { Image } from 'astro:assets';
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 2rem 1rem;
-  padding-top: 70px;
+  padding: 2rem;
+  animation: fadeIn 1s ease-out 0.2s both;
 }
 
 .heroContent {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin: 0 auto;
 }
 
 .venueInfo {
-  padding: 0 1rem;
-  text-align: center;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
@@ -153,25 +176,27 @@ import { Image } from 'astro:assets';
 }
 
 .venueTitle {
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: var(--primary);
-  font-family: var(--font-elika);
+  font-size: 6rem !important;
+  font-weight: normal !important;
+  color: var(--background);
+  font-family: var(--font-script);
   margin-bottom: 1rem;
 }
 
 .titleSeparator {
   width: 100%;
   height: 1px;
-  background-color: #000000;
+  background-color: var(--background);
   margin-bottom: 2rem;
 }
 
-.venueDescription p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #000000;
+p {
   margin-bottom: 1.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  margin-top: 1.5rem;
 }
 
 .venueImages {
@@ -180,7 +205,6 @@ import { Image } from 'astro:assets';
   flex-direction: column;
   height: auto;
   gap: 1rem;
-  padding: 0;
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
@@ -190,7 +214,7 @@ import { Image } from 'astro:assets';
 .imageContainer {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 340px;
   background: white;
   padding: 15px 15px 40px 15px;
   border-radius: 3px;
@@ -198,11 +222,6 @@ import { Image } from 'astro:assets';
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   margin-bottom: 0.5rem;
-}
-
-.imageContainer:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .venueImage {
@@ -225,47 +244,81 @@ import { Image } from 'astro:assets';
   white-space: nowrap;
 }
 
+.dividerSection {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  margin: auto;
+  margin-top: 6rem;
+  overflow: hidden;
+}
+
+.curvedLine {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: auto;
+  z-index: 0;
+}
+
 .coralSection {
   background-color: var(--primary-light);
-  padding: 3rem 1rem;
-  min-height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5rem 2rem;
+  animation: fadeIn 1s ease-out 0.4s both;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
-.coralSection .sectionTitle {
-  color: #fff;
+.sectionTitle {
+  font-size: 6rem !important;
+  font-weight: normal !important;
+  color: var(--background);
+  font-family: var(--font-script);
   text-align: center;
-  margin-bottom: 2rem;
+}
+
+.titleSeparator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--background);
 }
 
 .mapSection {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-top: 1rem;
-  align-items: center;
+  width: 100%;
 }
 
-.mapContainer {
+.mapCard {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: white;
   padding: 20px 20px 80px 20px;
   border-radius: 3px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
-  margin: 0 auto;
 }
 
-.mapContainer:hover {
+.mapCard:hover {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .mapFrame {
   display: flex;
   width: 100%;
-  height: 250px;
+  aspect-ratio: 1;
   border-radius: 2px;
 }
 
@@ -286,71 +339,33 @@ import { Image } from 'astro:assets';
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 600px;
-  gap: 1rem;
 }
 
 .locationDetails h3 {
   font-size: 1.5rem;
-  font-family: var(--font-elika);
-  color: #fff;
-  text-align: center;
+  font-family: var(--font-archivo);
   margin-bottom: 1rem;
 }
 
-.transportOption {
-  padding: 0.75rem 0;
-  border-radius: 0;
-}
-
-.transportOption h4 {
-  color: #fff;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  font-family: var(--font-elika);
-}
-
-.transportOption p {
-  color: #000;
-  font-size: 0.9rem;
-  font-weight: 400;
-}
-
 /* Small mobile optimizations */
-@media (min-width: var(--breakpoint-sm)) {
+@media (min-width: 480px) {
   .imageContainer {
-    height: 220px;
+    height: 300px;
   }
   
   .venueTitle {
     font-size: 2rem;
   }
-  
-  .mapContainer {
-    max-width: 500px;
-  }
 }
 
 /* Tablet styles */
-@media (min-width: var(--breakpoint-md)) {
-  .heroSection {
-    padding: 2rem;
-  }
-  
+@media (min-width: 640px) {
   .venueImages {
     max-width: 500px;
   }
-  
-  .coralSection {
-    padding: 4rem 2rem;
-  }
-  
-  .mapContainer {
-    max-width: 600px;
-  }
-  
-  .mapFrame {
-    height: 300px;
+
+  .mapCard {
+    width: 75%;
   }
   
   .mapLabel {
@@ -360,39 +375,38 @@ import { Image } from 'astro:assets';
 
 /* Desktop styles */
 @media (min-width: 768px) {
-  .heroSection {
-    min-height: calc(90vh - 70px);
-  }
-  
   .heroContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
     max-width: 1200px;
+    min-height: 650px;
   }
   
   .venueInfo {
     order: 2;
-    text-align: left;
   }
   
   .venueImages {
     order: 1;
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 100%;
     max-width: none;
   }
   
   .imageContainer {
     position: absolute;
-    width: 220px;
-    height: 200px;
+    width: 50%;
+  }
+
+  .imageContainer img {
+    aspect-ratio: 1;
   }
   
   .imageContainer:nth-child(1) {
-    left: 20%;
+    left: 0%;
     top: 7%;
     transform: rotate(-8deg);
     z-index: 4;
@@ -405,7 +419,7 @@ import { Image } from 'astro:assets';
   
   .imageContainer:nth-child(2) {
     right: 5%;
-    top: 8%;
+    top: 5%;
     transform: rotate(5deg);
     z-index: 4;
   }
@@ -416,8 +430,8 @@ import { Image } from 'astro:assets';
   }
   
   .imageContainer:nth-child(3) {
-    left: 20%;
-    bottom: 12%;
+    left: 0%;
+    bottom: 0%;
     transform: rotate(3deg);
     z-index: 1;
   }
@@ -429,7 +443,7 @@ import { Image } from 'astro:assets';
   
   .imageContainer:nth-child(4) {
     right: 5%;
-    bottom: 15%;
+    bottom: 2%;
     transform: rotate(-6deg);
     z-index: 2;
   }
@@ -440,23 +454,21 @@ import { Image } from 'astro:assets';
   }
   
   .mapSection {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
   }
-  
-  .coralSection {
-    padding: 5rem;
-    min-height: 100vh;
-  }
-  
+
   .mapContainer {
-    max-width: 600px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  .mapFrame {
-    height: 450px;
+  .textSection {
+    order: 2;
   }
   
   .mapLabel {
@@ -465,7 +477,7 @@ import { Image } from 'astro:assets';
 }
 
 /* Large desktop styles */
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .venueTitle {
     font-size: 3rem;
   }
