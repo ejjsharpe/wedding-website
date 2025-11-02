@@ -1,6 +1,6 @@
 {
   "main": "dist/_worker.js/index.js",
-  "name": "louise-and-elliot-wedding-website",
+  "name": "wedding-website",
   "compatibility_date": "2025-11-02",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
