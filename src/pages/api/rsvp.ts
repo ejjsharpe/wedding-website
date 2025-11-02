@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { google } from "googleapis";
 import { type } from "arktype";
-import { RSVPFormSchema, type RSVPForm, type SheetRow } from "../../types/rsvp";
+import { RSVPFormSchema, type SheetRow } from "../../types/rsvp";
 
 export const prerender = false;
 
@@ -79,11 +79,16 @@ export const POST: APIRoute = async ({ request }) => {
       firstName: guest.firstName,
       lastName: guest.lastName,
       rsvp: guest.rsvp ? "accept" : "decline",
-      ceremony: guest.rsvp === true && guest.eventsAttending.includes("ceremony") ? 1 : 0,
-      reception: guest.rsvp === true && guest.eventsAttending.includes("reception") ? 1 : 0,
-      dietaryRequirements: guest.rsvp === true
-        ? guest.dietaryRequirements || "None"
-        : "N/A",
+      ceremony:
+        guest.rsvp === true && guest.eventsAttending.includes("ceremony")
+          ? 1
+          : 0,
+      reception:
+        guest.rsvp === true && guest.eventsAttending.includes("reception")
+          ? 1
+          : 0,
+      dietaryRequirements:
+        guest.rsvp === true ? guest.dietaryRequirements || "None" : "N/A",
     }));
 
     // Save to Google Sheets
