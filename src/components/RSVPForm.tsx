@@ -1,5 +1,5 @@
 import { useForm } from "@tanstack/react-form";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { Guest, RSVPForm, RSVPResponse } from "../types/rsvp";
 import styles from "./RSVPForm.module.css";
 import { motion } from "framer-motion";
@@ -22,11 +22,19 @@ const createDefaultGuest = (): Guest => ({
 });
 
 export default function RSVPForm({ onSuccess }: RSVPFormProps) {
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [submitError, setSubmitError] = useState<string>("");
+
   const form = useForm({
     defaultValues: {
       guests: [createDefaultGuest()],
     },
     onSubmit: async ({ value }) => {
+      setSubmitStatus("idle");
+      setSubmitError("");
+
       try {
         const formData: RSVPForm = {
           guests: value.guests.filter(
@@ -46,21 +54,24 @@ export default function RSVPForm({ onSuccess }: RSVPFormProps) {
         const result: RSVPResponse = await response.json();
 
         if (result.success) {
+          setSubmitStatus("success");
           form.reset();
           onSuccess?.();
-          return {
-            type: "success" as const,
-            message: result.message,
-          };
         } else {
+          setSubmitStatus("error");
+          setSubmitError(
+            result.error || "An error occurred while submitting your RSVP."
+          );
           throw new Error(result.error);
         }
       } catch (error) {
-        throw new Error(
+        const errorMessage =
           error instanceof Error
             ? error.message
-            : "Network error. Please check your connection and try again."
-        );
+            : "Network error. Please check your connection and try again.";
+        setSubmitStatus("error");
+        setSubmitError(errorMessage);
+        throw new Error(errorMessage);
       }
     },
   });
@@ -333,15 +344,25 @@ export default function RSVPForm({ onSuccess }: RSVPFormProps) {
           )}
         </form.Field>
 
-        {/* Submit Status */}
+        {/* Submit Status Messages */}
+        {submitStatus === "success" && (
+          <div className={`${styles.statusMessage} ${styles.success}`}>
+            RSVP submitted successfully! Thank you for responding.
+          </div>
+        )}
+
+        {submitStatus === "error" && (
+          <div className={`${styles.statusMessage} ${styles.error}`}>
+            {submitError ||
+              "An error occurred while submitting your RSVP. Please try again."}
+          </div>
+        )}
+
+        {/* Submit Button */}
         <form.Subscribe
-          selector={(state) => [
-            state.submissionAttempts,
-            state.isSubmitting,
-            state.values.guests,
-          ]}
+          selector={(state) => [state.isSubmitting, state.values.guests]}
         >
-          {([submissionAttempts, isSubmitting, guests]) => {
+          {([isSubmitting, guests]) => {
             const hasValidGuests = (guests as Guest[]).some(
               (guest: Guest) =>
                 guest.firstName.trim() !== "" && guest.lastName.trim() !== ""
@@ -354,32 +375,19 @@ export default function RSVPForm({ onSuccess }: RSVPFormProps) {
             );
 
             return (
-              <>
-                {typeof submissionAttempts === "number" &&
-                  submissionAttempts > 0 &&
-                  form.state.submissionAttempts > 0 && (
-                    <div
-                      className={`${styles.statusMessage} ${styles.success}`}
-                    >
-                      RSVP submitted successfully! Thank you for responding.
-                    </div>
-                  )}
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={
-                    !hasValidGuests ||
-                    !hasValidEvents ||
-                    (typeof isSubmitting === "boolean" && isSubmitting)
-                  }
-                  className={styles.submitBtn}
-                >
-                  {typeof isSubmitting === "boolean" && isSubmitting
-                    ? "Submitting..."
-                    : "Submit RSVP"}
-                </button>
-              </>
+              <button
+                type="submit"
+                disabled={
+                  !hasValidGuests ||
+                  !hasValidEvents ||
+                  (typeof isSubmitting === "boolean" && isSubmitting)
+                }
+                className={styles.submitBtn}
+              >
+                {typeof isSubmitting === "boolean" && isSubmitting
+                  ? "Submitting..."
+                  : "Submit RSVP"}
+              </button>
             );
           }}
         </form.Subscribe>

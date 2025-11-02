@@ -193,6 +193,11 @@
   color: #155724;
 }
 
+.statusMessage.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
 /* Submit Button */
 .submitBtn {
   display: inline-block;
