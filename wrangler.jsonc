@@ -20,5 +20,9 @@
       "pattern": "www.lookingsharpe.com",
       "custom_domain": true
     }
-  ]
+  ],
+  "vars": {
+    "GOOGLE_SPREADSHEET_ID": "18RyVT8jKf7OVbPlyGn8UkXSnwiSvPTzQDMsJQP6533A",
+    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "wedding-rsvp-sheets@wedding-website-477011.iam.gserviceaccount.com"
+  }
 }
