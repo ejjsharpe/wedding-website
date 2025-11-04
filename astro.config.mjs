@@ -12,4 +12,7 @@ export default defineConfig({
       external: ["node:buffer"],
     },
   },
+  build: {
+    minify: false,
+  },
 });

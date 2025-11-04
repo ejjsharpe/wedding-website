@@ -6,14 +6,17 @@ import { RSVPFormSchema, type SheetRow } from "../../types/rsvp";
 export const prerender = false;
 
 interface EnvSchema {
-  SPREADSHEET_ID: string;
+  GOOGLE_SPREADSHEET_ID: string;
   GOOGLE_SERVICE_ACCOUNT_EMAIL: string;
   GOOGLE_PRIVATE_KEY: string;
 }
 
 async function appendToSheet(rows: SheetRow[], env: EnvSchema) {
-  const { SPREADSHEET_ID, GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY } =
-    env;
+  const {
+    GOOGLE_SPREADSHEET_ID,
+    GOOGLE_SERVICE_ACCOUNT_EMAIL,
+    GOOGLE_PRIVATE_KEY,
+  } = env;
   try {
     const auth = new google.auth.JWT({
       email: GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -34,7 +37,7 @@ async function appendToSheet(rows: SheetRow[], env: EnvSchema) {
     ]);
 
     await sheets.spreadsheets.values.append({
-      spreadsheetId: SPREADSHEET_ID,
+      spreadsheetId: GOOGLE_SPREADSHEET_ID,
       range: "A:G",
       valueInputOption: "RAW",
       requestBody: {
