@@ -69,6 +69,7 @@ export default function RSVPForm({ onSuccess }: RSVPFormProps) {
           error instanceof Error
             ? error.message
             : "Network error. Please check your connection and try again.";
+        console.error(errorMessage);
         setSubmitStatus("error");
         setSubmitError(errorMessage);
         throw new Error(errorMessage);
