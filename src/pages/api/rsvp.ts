@@ -18,23 +18,10 @@ async function appendToSheet(rows: SheetRow[], env: EnvSchema) {
     GOOGLE_PRIVATE_KEY,
   } = env;
 
-  if (
-    !GOOGLE_SPREADSHEET_ID ||
-    !GOOGLE_SERVICE_ACCOUNT_EMAIL ||
-    !GOOGLE_PRIVATE_KEY
-  ) {
-    console.log(
-      "missing",
-      GOOGLE_SPREADSHEET_ID,
-      GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      GOOGLE_PRIVATE_KEY
-    );
-  }
-
   try {
     const auth = new google.auth.JWT({
       email: GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      key: GOOGLE_PRIVATE_KEY,
+      key: GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 
